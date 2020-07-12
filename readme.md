@@ -1,63 +1,43 @@
-You've made it this far! But this is your next challenge!
-
-## The Problem
+## The Original Problem
 Frumbledingle Corp is struggling with its warehouse management, and has been looking for a developer to help. You need to create a small management app for their inventory. Part of this has been done for you by the last guy they hired - it's your job to finish it. This will consist of the following:
 
-### Data Operations
-- Create/Read/Delete operations for all different models
-- RESTful API routes for these operations
-- Setting up relations between models
 
-### Frontend Operations
-- Set up VueJs components for the various pages (one of these has been done for you)
-- The *categories* page **MUST** include the name of the relevant parent *category* in the table for each *category*, if there is one.
-- The *items* page **MUST** include the name of the relevant *location* and *category* in the table for each *item*.
-- The navigation links will tell you what pages need to work
-- Use *axios* (included) to retrieve data via AJAX
+## The Solution
+- This website has solved the requirments and also added a collection of new features. 
 
-### Other Considerations
-- You do not need to include User Authentication in this application
-- We should be able to *git clone* your project and run it; you must provide any additional instructions needed
-- Any other **cool stuff** you want to add after completing the requirements here will be taken into consideration.
+### Required fixes
+- Components and Models were added to allow the creation of categories and items.
+- A Report page has been made using a Query that will show the number of items with a price greater than an input price for each category and sub category
 
-## Setup Instructions
-- REQUIRED: `php`, `git`, `composer`, `mysql`, `node`, `npm`
-- `git clone` this repo
-- Run `composer install`
-- Make sure to set the database information your `.env` file
-- Run `php artisan migrate`
-- Host the app however you'd prefer, but use `npm run dev` or `npm run watch` to compile the Vue components
+### Changes
 
-## The Data
-The data for this application will be defined as below. Migrations have already been created to set up the tables for this data, but no data has been inserted. You will need to create your own database for this test.
+- softDelete feature has been removed for the additional features listed below that improve integrity
 
-### Locations
-- Columns: ID, Name
-- A *location* has many *items*
+### Additions
+- The migration files have been adjusted so that:
+    - deletion of a location will delete all items that belong to that location
+    - deletion of a category will delete all items that belong to that category
+    - deletion of a catagory will also delete all of its children that belong to that category
 
-### Items
-- Columns: ID, Name, Category ID, Location ID
-- An *item* belongs to a *location* and a *category*
+### Potential Updates
 
-### Categories
-- Columns: ID, Name, Parent ID
-- A *category* has many *items*
-- A *category* belongs to a parent *category*, though the parent may be null
+- Improve the overall styling of the page
+- Include in the Report Page that shows the count of a parent category based on the sum of the items in it's child categories
+    - (This was not done so as to ensure the Report Table Matches the Example Table)
 
-## The Final Battle
-After making the pages for individual models work, you will need to create a report page. This page must include a price input, and should give a list of all categories for each location (including the parent category name), and the number of items greater or equal to that price in that category/location pairing.
+## How to Run
+- Clone the repository
+- Run the following commands in the project directory
+    - composer install
+        - (check your .env file)
+    - php artisan migrate
+        - (due to removing softDelete, you may also need to run migrate:refresh)
+    - npm run dev
+    - php artisan serve
 
-Example:
 
-|Location|Parent Category|Category|Count|
-|--|--|--|--|
-|Frumbledingle Corp| |Widgets|1|
-|Frumbledingle Corp|Cars|Chevrolet|2|
-|Frumbledingle Corp|Cars|Nissan|3|
-|Plupbuckle, Inc.| |Widgets|1|
-|Plupbuckle, Inc.|Cars|Chevrolet|1|
-|Plupbuckle, Inc.|Cars|Nissan|2|
-|Plupbuckle, Inc.|Purses|Louis Vuitton|1|
+- Go to the url show in the next line after running the last php command which should say something like:
+    - Laravel development server started: <http://127.0.0.1:8000>
 
 
 

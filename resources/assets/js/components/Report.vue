@@ -7,7 +7,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Price</span>
                 </div>
-                <input v-model="price" type="text" class="form-control" placeholder="Price ( Greater or Equal) to Match" />
+                <input v-model="price" type="number" class="form-control" defaultValue = "0.00" required/>
                 <div class="input-group-append">
                     <button class="btn btn-primary">Run</button>
                 </div>
