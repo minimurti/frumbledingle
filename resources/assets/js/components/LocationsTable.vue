@@ -55,6 +55,7 @@ export default {
                 .catch(console.error);
         },
         deleteLocation(id) {
+            if(confirm("This will delete all items belonging to this Location"))
             return axios.post('/api/locations/' + id, {_method: 'DELETE'})
                 .then(this.getLocations)
                 .catch(console.error);

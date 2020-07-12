@@ -72,6 +72,7 @@ export default {
                 .catch(console.error);
         },
         deleteCategories(id) {
+            if(confirm("This will delete all items and belonging to this category as well as any child categories along with their corresponding items"))
             return axios.post('/api/categories/' + id, {_method: 'DELETE'})
                 .then(this.getCategories)
                 .catch(console.error);

@@ -50,7 +50,7 @@
                 <tr v-for="row in items" :key="row.id">
                     <td>{{ row.id }}</td>
                     <td>{{ row.name }}</td>
-                    <td>{{ row.category? row.category.name:null }}</td>
+                    <td>{{ row.category? row.category.name:null }}</td> <!-- should never be null anyways but just in case -->
                     <td>{{ row.location? row.location.name:null }}</td>
                     <td>$ {{ row.price }}</td>
                     <td align="center"><button class="btn btn-danger btn-sm" @click.prevent="deleteItem(row.id)"><i class="fa fa-times" /> Delete</button></td>
