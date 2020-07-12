@@ -19,6 +19,9 @@ class CreateCategoriesTable extends Migration
             //$table->softDeletes();
             $table->string('name');
             $table->integer('parent_id')->nullable();
+            $table->foreign('parent_id')
+            ->references('id')->on('categories')
+            ->onDelete('cascade');
         });
     }
 
