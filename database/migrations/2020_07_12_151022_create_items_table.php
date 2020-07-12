@@ -20,6 +20,11 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->decimal('price', 10, 2);
             $table->integer('location_id');
+            $table->foreign('location_id')
+            ->references('id')->on('locations')
+            ->onDelete('cascade');
+            
+            
             $table->integer('category_id');
             $table->foreign('category_id')
       ->references('id')->on('categories')

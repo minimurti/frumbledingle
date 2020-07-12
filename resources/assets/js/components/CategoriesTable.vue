@@ -7,13 +7,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">Name</span>
                 </div>
-                <input v-model="newCategoryName" type="text" class="form-control" placeholder="Location Name" />
+                <input v-model="newCategoryName" type="text" class="form-control" placeholder="Category Name" />
 
 	            <div class="input-group-prepend">
 		            <span class="input-group-text">Parent</span>
 	            </div>
 	            <select v-model="categoryParent" class="form-control">
-		            <option value="null">Category</option>
+		            <option value="null">None</option>
 		            <option v-for="category in categories" v-bind:value="category.id" v-bind:key="category.id">
 			            {{category.name}}
 		            </option>
