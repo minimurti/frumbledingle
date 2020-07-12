@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Location extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes;//allow for deletion
  
     protected $guarded = ['id'];
     
-    public function items()
-    {
-        return $this->hasMany(Item::class);
+    public function items(){
+        return $this->hasMany(Item::class);//Locations has a one-to-many relationship with Items
     }
 }
