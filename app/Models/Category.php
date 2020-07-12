@@ -7,10 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Category extends Model
 {
-	use SoftDeletes;
+	//use SoftDeletes;
 	protected $guarded = ['id'];
 
 	public function parent() {
 		return $this->belongsTo( Category::class);
 	}
+
+	public function item(){
+        return $this->hasMany(Item::class);//Locations has a one-to-many relationship with Items
+    }
 }
